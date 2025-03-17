@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.collapse {
+    visibility: visible !important;
+    display: block !important;
+  }
+  
+  .no-underline {
+    text-decoration: none !important; 
+  }
+  
