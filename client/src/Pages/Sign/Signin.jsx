@@ -61,8 +61,8 @@ const Signin = () => {
   
   return (
     <Layout>
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="w-[30%] min-w-[300px] shadow-2xl shadow-gray-700/60 p-4 bg-white rounded-lg md:w-1/3 lg:w-1/4">
+      <div className="text-xs sm:text-base flex justify-center items-center min-h-screen">
+        <div className="w-[30%] min-w-[250px] shadow-2xl shadow-gray-700/60 p-4 bg-white rounded-lg md:w-1/3 lg:w-1/4">
           <h1 className="text-center font-bold mb-5 ">User Login</h1>
           <form onSubmit={handleSubmit}>
             <div>
@@ -90,9 +90,9 @@ const Signin = () => {
             </div>
             <button
               type="submit"
-              className="btn btn-outline-primary w-full mt-4 mb-2"
+              className="link w-full py-2 rounded mt-3 transition-colors duration-500"
             >
-              Longin
+              Login
             </button>
             {message.text && (
               <p

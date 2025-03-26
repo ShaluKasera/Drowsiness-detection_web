@@ -45,8 +45,8 @@ const ForgetPassword = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-600 to-purple-700">
-        <div className="w-[90%] max-w-md bg-white  shadow-lg p-6 rounded-xl border border-white/20">
+      <div className="text-sm sm:text-base flex justify-center items-center min-h-screen ">
+        <div className="w-[80%] max-w-md bg-white  shadow-lg p-6 rounded-xl border border-white/20">
           {submitted ? (
             <div className="text-center mt-5">
               <FaCheckCircle className="text-green-400 text-6xl mx-auto animate-bounce" />
@@ -66,10 +66,10 @@ const ForgetPassword = () => {
               </p>
 
               <div className="flex flex-col">
-                <label className="font-medium text-gray-900 mb-1">Email Address</label>
+                <label className="form-label">Email Address</label>
                 <input
                   type="email"
-                  className="p-3 border border-gray-900 rounded-lg bg-white/20 backdrop-blur-lg text-gray-900 focus:ring focus:ring-purple-200 outline-none"
+                  className="p-2 border border-gray-900 rounded-lg bg-white/20 backdrop-blur-lg text-gray-900 focus:ring focus:ring-gray-200 outline-none"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -79,7 +79,7 @@ const ForgetPassword = () => {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-gray-200 font-semibold py-3 rounded-lg hover:from-blue-600 hover:to-purple-600 transition duration-300 flex items-center justify-center"
+                className="w-full link py-2 rounded transition-colors duration-500"
                 disabled={loading}
               >
                 {loading ? (

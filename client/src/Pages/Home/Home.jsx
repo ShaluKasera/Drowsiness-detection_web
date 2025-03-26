@@ -5,13 +5,13 @@ import Pic from "../../assets/drowzyPerson.avif";
 const Home = () => {
   return (
     <Layout>
-      <div className="container my-5">
+      <div className=" container my-5 ">
         <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-          <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
-            <h1 className="display-4 fw-bold lh-1 text-body-emphasis">
+          <div className="col-lg-7 p-3 p-lg-5 pt-lg-3 text-center lg:text-start">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-body-emphasis">
               Detect Drowsiness Before It's Too Late
             </h1>
-            <p className="lead">
+            <p className="text-sm sm:text-base lg:text-lg">
               Our AI-powered system monitors signs of drowsiness in real-time
               and alerts you instantly. Whether driving or working late, stay
               safe and alert with smart fatigue detection.
@@ -20,12 +20,13 @@ const Home = () => {
               <Link
                 to="/livedetect"
                 type="button"
-                className="btn btn-primary btn-lg px-4 me-md-2 fw-bold"
+                className="no-underline link text-center py-2 rounded-2xl transition-colors duration-500 px-5 fw-bold"
               >
                 Try Now
               </Link>
             </div>
           </div>
+
           <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
             <img className="rounded-2xl" src={Pic} alt="" width="720" />
           </div>

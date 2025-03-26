@@ -6,7 +6,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 const Profile = () => {
-  const [user, setUser] = useState(null); // Store user details
+  const [user, setUser] = useState(null);
   const [role, setRole] = useState(null);
 
   useEffect(() => {
@@ -21,26 +21,21 @@ const Profile = () => {
 
         setRole(decoded.role); // Set role
 
-
-
-         
         if (!decoded.role) {
-            console.error("❌ Role is missing in decoded token!");
-          } else {
-            console.log("✅ Role from token:", decoded.role);
-          }
-
-
-
-
-
+          console.error(" Role is missing in decoded token!");
+        } else {
+          console.log(" Role from token:", decoded.role);
+        }
         const userId = decoded.id; // Extract user ID from token
 
-        const response = await axios.get(`http://localhost:8000/users/${userId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get(
+          `http://localhost:8000/users/${userId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
-        console.log(decoded.role)
+        console.log(decoded.role);
 
         setUser(response.data); // Set user data from backend
       } catch (error) {
@@ -54,8 +49,8 @@ const Profile = () => {
   if (!user) {
     return (
       <Layout>
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-800 to-purple-700 p-6">
-          <p className="text-white text-xl font-semibold">Loading Profile...</p>
+        <div className="text-sm sm:text-base flex justify-center items-center min-h-screen  p-6">
+          <p className="text-black text-xl font-semibold">Loading Profile...</p>
         </div>
       </Layout>
     );
@@ -63,18 +58,18 @@ const Profile = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-800 to-purple-700 p-6">
-        <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+      <div className="text-xs sm:text-base flex justify-center items-center min-h-screen p-4 sm:p-6">
+        <div className="shadow-lg rounded-2xl p-6 sm:p-8 w-full max-w-xs sm:max-w-md">
           {/* Profile Icon */}
           <div className="flex justify-center mb-4">
-            <HiUserCircle className="text-7xl text-blue-600" />
+            <HiUserCircle className="text-6xl sm:text-7xl text-gray-700" />
           </div>
 
-          <h1 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-500">
+          <h1 className="text-2xl sm:text-3xl font-bold text-center text-transparent">
             Profile
           </h1>
 
-          <div className="mt-6 space-y-4 text-lg">
+          <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-sm sm:text-lg break-words">
             <div className="flex justify-between">
               <label className="font-semibold text-gray-700">Name:</label>
               <p className="text-gray-800">{user.name}</p>
@@ -89,7 +84,7 @@ const Profile = () => {
             </div>
             <div className="flex justify-between">
               <label className="font-semibold text-gray-700">Email:</label>
-              <p className="text-gray-800">{user.email}</p>
+              <p className="text-gray-800 break-words">{user.email}</p>
             </div>
             <div className="flex justify-between">
               <label className="font-semibold text-gray-700">Gender:</label>
@@ -99,10 +94,10 @@ const Profile = () => {
 
           {/* Admin Only Button */}
           {role === "admin" && (
-            <div className="mt-6 text-center">
+            <div className="mt-4 sm:mt-6 text-center">
               <Link
                 to="/pendingApproval"
-                className="bg-gradient-to-r from-blue-500 to-purple-500 text-white no-underline px-6 py-2 rounded-lg text-lg font-semibold shadow-lg"
+                className="no-underline py-2 sm:py-3 px-3 sm:px-4 rounded-2xl transition-colors duration-300 link"
               >
                 View Pending Approvals
               </Link>

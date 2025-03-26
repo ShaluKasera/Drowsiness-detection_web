@@ -75,11 +75,11 @@ const PendingApproval = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen flex flex-col items-center p-6 bg-gradient-to-r from-blue-800 to-purple-700">
+      <div className="text-xs sm:text-base min-h-screen flex flex-col items-center p-6 ">
         <h1 className="text-3xl font-bold text-white mb-6">Pending Approvals</h1>
 
         {message && (
-          <p className={`mb-4 text-lg ${message.type === "error" ? "text-red-500" : "text-green-500"}`}>
+          <p className={`mb-4 text-lg ${message.type === "error" ? "text-red-800" : "text-green-800"}`}>
             {message.text}
           </p>
         )}
@@ -90,7 +90,7 @@ const PendingApproval = () => {
           <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-gradient-to-r from-blue-600 to-purple-500 text-white">
+                <tr className="bg-gray-200 text-gray-900">
                   <th className="p-3 text-left">Name</th>
                   <th className="p-3 text-left">Email</th>
                   <th className="p-3 text-left">Role</th>
@@ -99,20 +99,20 @@ const PendingApproval = () => {
               </thead>
               <tbody>
                 {pendingUsers.map((user) => (
-                  <tr key={user._id} className="border-b hover:bg-gray-100">
+                  <tr key={user._id} className="border-b">
                     <td className="p-3">{user.name}</td>
                     <td className="p-3">{user.email}</td>
                     <td className="p-3">{user.role}</td>
                     <td className="p-3 flex justify-center space-x-3">
                       <button
                         onClick={() => handleApprove(user.email)}
-                        className="bg-green-500 text-white px-4 py-1 rounded-lg hover:bg-green-600"
+                        className="link px-3 py-1 rounded transition-colors duration-500 me-3"
                       >
                         Accept
                       </button>
                       <button
                         onClick={() => handleReject(user.email)}
-                        className="bg-red-500 text-white px-4 py-1 rounded-lg hover:bg-red-600"
+                        className="bg-gray-500 text-white px-4 py-1 rounded  hover:bg-gray-800 transition-colors duration-500"
                       >
                         Reject
                       </button>

@@ -39,7 +39,7 @@ const PasswordReset = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-500 to-blue-500 p-4">
+      <div className="flex justify-center items-center min-h-screen  p-4">
         <div className="w-full max-w-sm bg-white p-6 rounded-2xl shadow-lg">
           <h2 className="text-center text-xl font-semibold text-gray-700 mb-4">
             Reset Password
@@ -53,7 +53,7 @@ const PasswordReset = () => {
               </label>
               <input
                 type="password"
-                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-purple-200 outline-none"
+                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-gray-200 outline-none"
                 id="newPassword"
                 placeholder="Enter your new password"
                 name="newPassword"
@@ -71,7 +71,7 @@ const PasswordReset = () => {
               </label>
               <input
                 type="password"
-                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-purple-200 outline-none"
+                className="w-full border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-gray-200 outline-none"
                 id="confirmPassword"
                 placeholder="Confirm password"
                 name="confirmPassword"
@@ -82,7 +82,7 @@ const PasswordReset = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-gray-200 font-semibold py-3 rounded-lg hover:from-blue-600 hover:to-purple-600 transition duration-300 flex items-center justify-center"
+              className="w-full link py-2 rounded transition-colors duration-500"
             >
               Reset Password
             </button>

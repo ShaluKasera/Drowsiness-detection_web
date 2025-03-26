@@ -10,6 +10,9 @@ import Profile from './Pages/Sign/Profile';
 import PendingApproval from './Pages/Admin/PendingApproval';
 import ForgetPassword from './Pages/Sign/ForgetPassword';
 import PasswordReset from './Pages/Sign/PasswordReset';
+import Error from './Pages/Error/Error';
+import Model from './Pages/Detect/Model';
+
 
 function App() {
   return (
@@ -22,6 +25,8 @@ function App() {
       <Route path='/pendingApproval' element={<PendingApproval/>}/>
       <Route path='/forgotPassword' element={<ForgetPassword/>}/>
       <Route path='/passwordReset/:resetToken' element={<PasswordReset/>}/>
+      {/* <Route path='/livedetect' element={<Model/>}/> */}
+      <Route path='*' element={<Error/>}/>
     </Routes>
     </BrowserRouter>
     

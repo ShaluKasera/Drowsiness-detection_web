@@ -9,3 +9,11 @@
     text-decoration: none !important; 
   }
   
+  .link:hover{
+    color: white  !important;
+    background: #343434;
+  }
+  .link{
+    color: #343434 !important;
+    border: 2px solid #343434;
+  }
