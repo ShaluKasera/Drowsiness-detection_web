@@ -21,7 +21,7 @@ const PasswordReset = () => {
 
     try {
       const response = await axios.post(
-        `https://drowsiness-detection-web-4.onrender.com/reset-password/${resetToken}`,
+        `https://drowsiness-detection-web-4.onrender.com/reset-password/`,
         { newPassword },
         { headers: { "Content-Type": "application/json" } }
       );
