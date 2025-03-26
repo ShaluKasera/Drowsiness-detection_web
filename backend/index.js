@@ -12,10 +12,20 @@ connect();
 
 // Middleware
 app.use(cors({
-  origin: "*", // Allow all origins (Modify for production)
-  methods: ["GET", "POST", "PUT", "DELETE"], // Explicitly allow methods
-  allowedHeaders: ["Content-Type", "Authorization"] // Allow headers
+  origin: "https://drowsiness-detection-web.vercel.app", // Allow only your frontend
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true // Allow cookies & authentication headers
 }));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://drowsiness-detection-web.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 
 app.use(express.json()); // Parse JSON request body
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
