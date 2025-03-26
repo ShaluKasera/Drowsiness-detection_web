@@ -2,7 +2,7 @@ const transporter = require("./emailConfig");
 
 const sendForgotPasswordMail = async (email, resetToken) => {
   try {
-    const resetLink = `http://localhost:5173/passwordReset/${resetToken}`;
+    const resetLink = `https://drowsiness-detection-web.vercel.app//passwordReset/${resetToken}`;
 
     // ✅ Ensure transporter is used correctly
     const response = await transporter.sendMail({
@@ -71,7 +71,7 @@ const sendNewSignupUserDetailsToAdmin = async (name, email, role) => {
 
 const sentApprovedMailToUser = async(email, name) => {
   try {
-    const link = `http://localhost:5173`
+    const link = `https://drowsiness-detection-web.vercel.app/`
     const response = await transporter.sendMail({
       from: '"Support Team" <your-email@example.com>',
       to: email, 
