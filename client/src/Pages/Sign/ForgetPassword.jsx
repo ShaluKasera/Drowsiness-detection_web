@@ -15,7 +15,7 @@ const ForgetPassword = () => {
     setMessage({ text: "", type: "" });
   
     try {
-      const response = await axios.post("http://localhost:8000/forgotpassword", {
+      const response = await axios.post("https://drowsiness-detection-web-4.onrender.com/forgotpassword", {
         email,
       });
   

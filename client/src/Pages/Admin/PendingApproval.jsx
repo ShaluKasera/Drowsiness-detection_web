@@ -61,7 +61,7 @@ const PendingApproval = () => {
   const handleReject = async (email) => {
     try {
       await axios.post(
-        "http://localhost:8000/reject-user",
+        "https://drowsiness-detection-web-4.onrender.com/reject-user",
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
