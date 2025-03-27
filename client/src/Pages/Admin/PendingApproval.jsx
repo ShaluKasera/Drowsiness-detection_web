@@ -13,7 +13,7 @@ const PendingApproval = () => {
   useEffect(() => {
     const fetchPendingUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/unapproved-users", {
+        const response = await axios.get("https://drowsiness-detection-web-4.onrender.com/unapproved-users", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPendingUsers(response.data);
@@ -30,7 +30,7 @@ const PendingApproval = () => {
   const handleApprove = async (email) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/approve-user",
+        "https://drowsiness-detection-web-4.onrender.com/approve-user",
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -61,7 +61,7 @@ const PendingApproval = () => {
   const handleReject = async (email) => {
     try {
       await axios.post(
-        "http://localhost:8000/reject-user",
+        "https://drowsiness-detection-web-4.onrender.com/reject-user",
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
