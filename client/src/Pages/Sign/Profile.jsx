@@ -29,7 +29,7 @@ const Profile = () => {
         const userId = decoded.id; // Extract user ID from token
 
         const response = await axios.get(
-          `https://drowsiness-detection-web-4.onrender.com/users/${userId}`,
+          `http://localhost:8000/users/${userId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

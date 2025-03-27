@@ -19,7 +19,7 @@ const authenticate = async (req, res, next) => {
       return res.status(401).json({ msg: "User not found" });
     }
 
-    console.log("Authenticated User:", req.user); // Debugging
+    // console.log("Authenticated User:", req.user); // Debugging
     next();
   } catch (error) {
     console.error("JWT Authentication Error:", error);

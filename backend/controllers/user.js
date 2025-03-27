@@ -5,6 +5,7 @@ const {
   sendForgotPasswordMail,
   sendNewSignupUserDetailsToAdmin,
   sentApprovedMailToUser,
+  sendRejectionMailToUser,
 } = require("../utils/emailSend");
 
 const signup = async (req, res) => {
@@ -46,7 +47,6 @@ const signup = async (req, res) => {
       });
     }
 
-    // Store the user with OTP and unverified status
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
@@ -56,8 +56,8 @@ const signup = async (req, res) => {
       email,
       password: hashedPassword,
       gender,
-      role: role === "admin" ? "admin" : "user", // Assign "admin" only if explicitly set
-      isApproved: false, // Admin approval required
+      role: role === "admin" ? "admin" : "user", 
+      isApproved: false,
     });
 
     await newUser.save();
@@ -123,7 +123,7 @@ const forgotPassword = async (req, res) => {
     user.resetPasswordExpires = Date.now() + 3600000; // 1-hour expiry
     await user.save();
 
-    console.log(resetToken);
+    // console.log(resetToken);
 
     // Send password reset email
     const emailSent = await sendForgotPasswordMail(user.email, resetToken);
@@ -207,7 +207,6 @@ const approveUser = async (req, res) => {
       return res.status(403).json({ msg: "Access denied. Admins only." });
     }
 
-    // Ensure we are approving only regular users, not admins
     const user = await User.findOne({ email });
     if (!user) {
       return res
@@ -221,7 +220,7 @@ const approveUser = async (req, res) => {
 
     user.isApproved = true;
     await user.save();
-    // await sendApprovedMailToUser(user.email, user.name);
+  
     await sentApprovedMailToUser(email, name);
 
     res.status(200).json({ msg: "User approved successfully" });
@@ -232,7 +231,7 @@ const approveUser = async (req, res) => {
 };
 
 const rejectUser = async (req, res) => {
-  const { email } = req.body;
+  const { email,name } = req.body;
   const adminId = req.user.id;
 
   try {
@@ -247,8 +246,8 @@ const rejectUser = async (req, res) => {
       return;
     }
 
-    // Send rejection email before deleting the user
-    // await sendRejectionMailToUser(user.email, user.name);
+   
+    await sendRejectionMailToUser(email,user.name);
 
     await User.findOneAndDelete({ email });
     if (!user) {
@@ -267,7 +266,13 @@ const getUserDetails = async (req, res) => {
     if (!user) {
       return res.status(404).json({ msg: "User not found" });
     }
-    res.json(user);
+     // Format DOB if it exists
+     const formattedUser = {
+      ...user._doc,
+      dob: user.dob ? user.dob.toISOString().split("T")[0] : null, // Convert to YYYY-MM-DD
+    };
+
+    res.json(formattedUser);
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).json({ msg: "Server Error" });

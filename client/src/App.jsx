@@ -24,7 +24,7 @@ function App() {
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/pendingApproval' element={<PendingApproval/>}/>
       <Route path='/forgotPassword' element={<ForgetPassword/>}/>
-      <Route path='/passwordReset/:resetToken' element={<PasswordReset/>}/>
+      <Route path='/passwordReset' element={<PasswordReset/>}/>
       {/* <Route path='/livedetect' element={<Model/>}/> */}
       <Route path='*' element={<Error/>}/>
     </Routes>

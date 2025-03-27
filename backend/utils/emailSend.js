@@ -2,8 +2,7 @@ const transporter = require("./emailConfig");
 
 const sendForgotPasswordMail = async (email, resetToken) => {
   try {
-    const resetLink = `https://drowsiness-detection-web.vercel.app/passwordReset/${resetToken}`;
-
+    const resetLink = `https://drowsiness-detection-web.vercel.app/${resetToken}`;
 
     // ✅ Ensure transporter is used correctly
     const response = await transporter.sendMail({
@@ -43,7 +42,7 @@ const sendNewSignupUserDetailsToAdmin = async (name, email, role) => {
   try {
     const response = await transporter.sendMail({
       from: '"Support Team" <your-email@example.com>',
-      to: "admin@example.com", 
+      to: "admin@example.com",
       subject: "New User Signup Request",
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px;">
@@ -62,7 +61,9 @@ const sendNewSignupUserDetailsToAdmin = async (name, email, role) => {
       `,
     });
 
-    console.log(`Signup request email sent to admin. Message ID: ${response.messageId}`);
+    console.log(
+      `Signup request email sent to admin. Message ID: ${response.messageId}`
+    );
     return true;
   } catch (error) {
     console.error("Error sending signup request email:", error);
@@ -70,17 +71,17 @@ const sendNewSignupUserDetailsToAdmin = async (name, email, role) => {
   }
 };
 
-const sentApprovedMailToUser = async(email, name) => {
+const sentApprovedMailToUser = async (email, name) => {
   try {
-    const link = `https://drowsiness-detection-web.vercel.app/`
+    const link = `https://drowsiness-detection-web.vercel.app/`;
     const response = await transporter.sendMail({
       from: '"Support Team" <your-email@example.com>',
-      to: email, 
+      to: email,
       subject: "Your Account Has Been Approved",
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px;">
             <h2 style="color: #1E90FF; text-align: center;">Account Approved</h2>
-            <p>Hello ${name},</p>
+            <p>Hello ${name}</p>
             <p>We are pleased to inform you that your account has been approved by the admin. You can now log in and start using our services.</p>
             <p>Click the link below to log in:</p>
             <p style="text-align: center;">
@@ -96,16 +97,41 @@ const sentApprovedMailToUser = async(email, name) => {
       `,
     });
 
-    console.log(`Approval email sent to user. Message ID: ${response.messageId}`);
+    console.log(
+      `Approval email sent to user. Message ID: ${response.messageId}`
+    );
     return true;
   } catch (error) {
     console.error("Error sending approval email:", error);
     return false;
   }
-}
+};
+const sendRejectionMailToUser = async (email, name) => {
+  try {
+    const response = await transporter.sendMail({
+      from: '"Support Team" <your-email@example.com>',
+      to: email,
+      subject: "Your request has rejected",
+      html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px;">
+    <h2 style="color: #FF0000; text-align: center;">Account Rejected</h2>
+    <p>Hello</p>
+    <p>We regret to inform you that your account registration request has been reviewed and rejected by the admin.</p>
+    
+    <p>Best Regards,</p>
+    <p><strong>Support Team</strong></p>
+</div>
+`,
+    });
+  } catch (error) {
+    console.error("Error in sending rejection email:", error);
+    return false;
+  }
+};
 
 module.exports = {
   sendForgotPasswordMail,
   sendNewSignupUserDetailsToAdmin,
-  sentApprovedMailToUser
+  sentApprovedMailToUser,
+  sendRejectionMailToUser,
 };
