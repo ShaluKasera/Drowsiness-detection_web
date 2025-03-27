@@ -23,7 +23,7 @@ function App() {
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/pendingApproval' element={<PendingApproval/>}/>
-      <Route path='/forgotPassword' element={<ForgetPassword/>}/>
+      <Route path='/forgotPassword/:resetToken' element={<ForgetPassword/>}/>
       <Route path='/passwordReset' element={<PasswordReset/>}/>
       {/* <Route path='/livedetect' element={<Model/>}/> */}
       <Route path='*' element={<Error/>}/>
